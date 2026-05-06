@@ -1,0 +1,1432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ahmed Khalil | Senior Data Analyst Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #0a66c2;
+      --primary-dark: #084a94;
+      --secondary: #58a6ff;
+      --bg-dark: #0e1117;
+      --bg-card: #161b22;
+      --bg-hover: #1c2128;
+      --text-primary: #e0e0e0;
+      --text-secondary: #999;
+      --accent: #2ea043;
+      --warning: #f0b429;
+      --danger: #f85149;
+      --border: #30363d;
+      --shadow: 0 4px 20px rgba(0,0,0,0.4);
+      --transition: all 0.3s ease;
+    }
+    
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg-dark);
+      color: var(--text-primary);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(14, 17, 23, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+      border-bottom: 1px solid var(--border);
+    }
+    
+    .logo {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--secondary);
+    }
+    
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    
+    .nav-links a {
+      color: var(--text-primary);
+      text-decoration: none;
+      font-weight: 500;
+      transition: var(--transition);
+      position: relative;
+      padding: 0.5rem 0;
+    }
+    
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--secondary);
+    }
+    
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--secondary);
+      transition: var(--transition);
+    }
+    
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+    
+    .mobile-toggle {
+      display: none;
+      font-size: 1.5rem;
+      background: none;
+      border: none;
+      color: var(--text-primary);
+      cursor: pointer;
+    }
+    
+    /* Header */
+    header {
+      text-align: center;
+      padding: 8rem 2rem 4rem;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark), #0d1b2a);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    header::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(10,102,194,0.15) 0%, transparent 70%);
+      animation: pulse 15s ease-in-out infinite;
+    }
+    
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+    
+    .profile-container {
+      position: relative;
+      z-index: 2;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    
+    header img {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      border: 4px solid var(--secondary);
+      margin-bottom: 1.5rem;
+      object-fit: cover;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+    
+    header img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 30px rgba(88, 166, 255, 0.4);
+    }
+    
+    h1 {
+      font-size: 2.8rem;
+      margin-bottom: 0.8rem;
+      background: linear-gradient(to right, #fff, var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .title {
+      font-size: 1.3rem;
+      color: var(--secondary);
+      margin-bottom: 1.5rem;
+      font-weight: 500;
+    }
+    
+    .contact-info {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin: 1.5rem 0;
+    }
+    
+    .contact-info a {
+      color: var(--text-primary);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: var(--transition);
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      background: rgba(22, 27, 34, 0.7);
+    }
+    
+    .contact-info a:hover {
+      background: var(--bg-hover);
+      color: var(--secondary);
+      transform: translateY(-2px);
+    }
+    
+    .cta-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+    
+    .btn {
+      padding: 0.8rem 1.8rem;
+      border-radius: 8px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+    }
+    
+    .btn-primary:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(10, 102, 194, 0.4);
+    }
+    
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--secondary);
+      color: var(--secondary);
+    }
+    
+    .btn-outline:hover {
+      background: rgba(88, 166, 255, 0.15);
+      transform: translateY(-2px);
+    }
+    
+    /* Sections */
+    section {
+      max-width: 1200px;
+      margin: 4rem auto;
+      padding: 0 2rem;
+    }
+    
+    .section-title {
+      font-size: 2rem;
+      color: var(--secondary);
+      margin-bottom: 2rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 2px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+    
+    .section-title i {
+      font-size: 1.5rem;
+    }
+    
+    /* About */
+    .about-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+    
+    .about-text p {
+      margin-bottom: 1.2rem;
+      font-size: 1.05rem;
+    }
+    
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    
+    .stat-card {
+      background: var(--bg-card);
+      padding: 1.5rem;
+      border-radius: 12px;
+      text-align: center;
+      border: 1px solid var(--border);
+      transition: var(--transition);
+    }
+    
+    .stat-card:hover {
+      border-color: var(--secondary);
+      transform: translateY(-3px);
+    }
+    
+    .stat-number {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--secondary);
+      margin-bottom: 0.3rem;
+    }
+    
+    .stat-label {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+    }
+    
+    /* Projects */
+    .filters {
+      display: flex;
+      gap: 0.8rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    
+    .filter-btn {
+      padding: 0.5rem 1.2rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      color: var(--text-primary);
+      cursor: pointer;
+      transition: var(--transition);
+      font-size: 0.95rem;
+    }
+    
+    .filter-btn.active,
+    .filter-btn:hover {
+      background: var(--primary);
+      border-color: var(--primary);
+    }
+    
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 1.8rem;
+    }
+    
+    .project-card {
+      background: var(--bg-card);
+      border-radius: 16px;
+      padding: 1.8rem;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      border: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: var(--primary);
+      transform: scaleY(0);
+      transform-origin: bottom;
+      transition: var(--transition);
+    }
+    
+    .project-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--secondary);
+    }
+    
+    .project-card:hover::before {
+      transform: scaleY(1);
+    }
+    
+    .project-card.featured {
+      border: 2px solid var(--accent);
+    }
+    
+    .project-card.featured::before {
+      background: var(--accent);
+    }
+    
+    .project-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 1.2rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    
+    .project-title {
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: #fff;
+    }
+    
+    .project-badge {
+      background: var(--accent);
+      color: white;
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+    
+    .project-badge.secondary {
+      background: var(--warning);
+      color: #000;
+    }
+    
+    .project-badge.tertiary {
+      background: var(--secondary);
+    }
+    
+    .project-description {
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+      font-size: 0.98rem;
+    }
+    
+    .project-tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .tech-tag {
+      background: rgba(88, 166, 255, 0.15);
+      color: var(--secondary);
+      padding: 0.3rem 0.8rem;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+    
+    .project-features {
+      list-style: none;
+      margin-bottom: 1.5rem;
+    }
+    
+    .project-features li {
+      padding: 0.4rem 0;
+      padding-left: 1.5rem;
+      position: relative;
+      font-size: 0.95rem;
+    }
+    
+    .project-features li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: bold;
+    }
+    
+    .project-links {
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+    }
+    
+    .project-link {
+      color: var(--secondary);
+      text-decoration: none;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: var(--transition);
+    }
+    
+    .project-link:hover {
+      color: #fff;
+      gap: 0.6rem;
+    }
+    
+    /* Skills */
+    .skills-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+    
+    .skill-category {
+      background: var(--bg-card);
+      padding: 1.8rem;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+    }
+    
+    .skill-category h3 {
+      color: var(--secondary);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+    }
+    
+    .skill-item {
+      margin-bottom: 1.3rem;
+    }
+    
+    .skill-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+    
+    .skill-bar {
+      height: 8px;
+      background: var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    
+    .skill-progress {
+      height: 100%;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      border-radius: 4px;
+      width: 0;
+      transition: width 1s ease;
+    }
+    
+    /* Automation Section */
+    .automation-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.8rem;
+    }
+    
+    .automation-card {
+      background: var(--bg-card);
+      border-radius: 16px;
+      padding: 2rem;
+      border: 1px solid var(--border);
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .automation-card::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(46, 160, 67, 0.1) 0%, transparent 70%);
+      opacity: 0;
+      transition: var(--transition);
+    }
+    
+    .automation-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--accent);
+    }
+    
+    .automation-card:hover::after {
+      opacity: 1;
+    }
+    
+    .automation-icon {
+      font-size: 2.5rem;
+      color: var(--accent);
+      margin-bottom: 1.2rem;
+    }
+    
+    /* Learning Section */
+    .learning-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    
+    .platform-card {
+      background: var(--bg-card);
+      padding: 1.5rem;
+      border-radius: 12px;
+      text-align: center;
+      border: 1px solid var(--border);
+      transition: var(--transition);
+    }
+    
+    .platform-card:hover {
+      border-color: var(--secondary);
+      transform: translateY(-3px);
+    }
+    
+    .platform-icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: var(--secondary);
+    }
+    
+    /* Footer */
+    footer {
+      background: var(--bg-card);
+      color: var(--text-secondary);
+      text-align: center;
+      padding: 3rem 2rem;
+      margin-top: 4rem;
+      border-top: 1px solid var(--border);
+    }
+    
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin: 1.5rem 0;
+    }
+    
+    .social-links a {
+      color: var(--text-primary);
+      font-size: 1.5rem;
+      transition: var(--transition);
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--bg-dark);
+    }
+    
+    .social-links a:hover {
+      color: white;
+      background: var(--primary);
+      transform: translateY(-3px);
+    }
+    
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .animate {
+      animation: fadeInUp 0.6s ease forwards;
+    }
+    
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.2s; }
+    .delay-3 { animation-delay: 0.3s; }
+    .delay-4 { animation-delay: 0.4s; }
+    
+    /* Responsive */
+    @media (max-width: 900px) {
+      .about-content {
+        grid-template-columns: 1fr;
+      }
+      
+      .nav-links {
+        position: fixed;
+        top: 70px;
+        right: -100%;
+        width: 250px;
+        height: calc(100vh - 70px);
+        background: var(--bg-card);
+        flex-direction: column;
+        padding: 2rem;
+        transition: var(--transition);
+        border-left: 1px solid var(--border);
+      }
+      
+      .nav-links.active {
+        right: 0;
+      }
+      
+      .mobile-toggle {
+        display: block;
+      }
+      
+      h1 {
+        font-size: 2.3rem;
+      }
+      
+      .projects-grid,
+      .automation-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    @media (max-width: 600px) {
+      header {
+        padding: 6rem 1.5rem 3rem;
+      }
+      
+      header img {
+        width: 140px;
+        height: 140px;
+      }
+      
+      h1 {
+        font-size: 1.9rem;
+      }
+      
+      .title {
+        font-size: 1.1rem;
+      }
+      
+      .contact-info {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .btn {
+        width: 100%;
+        max-width: 300px;
+        justify-content: center;
+      }
+      
+      section {
+        padding: 0 1.5rem;
+        margin: 3rem auto;
+      }
+      
+      .section-title {
+        font-size: 1.7rem;
+      }
+    }
+    
+    /* Smooth Scroll */
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    
+    ::-webkit-scrollbar-track {
+      background: var(--bg-dark);
+    }
+    
+    ::-webkit-scrollbar-thumb {
+      background: var(--primary);
+      border-radius: 4px;
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--primary-dark);
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav>
+    <div class="logo">AK<span style="color:var(--secondary)">.Analytics</span></div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about" class="active">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#automation">Automation</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="mobile-toggle" id="mobileToggle">
+      <i class="fas fa-bars"></i>
+    </button>
+  </nav>
+
+  <!-- Header -->
+  <header>
+    <div class="profile-container">
+      <img src="images/profile.jpg" 
+           alt="Ahmed Khalil - Senior Data Analyst"
+           width="180" 
+           height="180"
+           loading="lazy"
+           onerror="this.src='https://ui-avatars.com/api/?name=Ahmed+Khalil&size=180&background=0a66c2&color=fff'">
+      <h1>Ahmed Khalil</h1>
+      <p class="title">Senior Data Analyst | Power BI Expert | SQL & Python Specialist | Automation Engineer</p>
+      
+      <div class="contact-info">
+        <a href="mailto:ahmedkhalil22.ak50@gmail.com">
+          <i class="fas fa-envelope"></i> ahmedkhalil22.ak50@gmail.com
+        </a>
+        <a href="tel:+201550888806">
+          <i class="fas fa-phone"></i> +20 155 088 8806
+        </a>
+        <a href="https://www.linkedin.com/in/ahmed-khalil-badawy-995491209" target="_blank">
+          <i class="fab fa-linkedin"></i> LinkedIn Profile
+        </a>
+      </div>
+      
+      <div class="cta-buttons">
+        <a href="#projects" class="btn btn-primary">
+          <i class="fas fa-briefcase"></i> View Projects
+        </a>
+        <!-- ✅ رابط الـ CV المُحدَّث -->
+        <a href="cv/Ahmed_Khalil_CV.pdf" 
+           class="btn btn-outline" 
+           download="Ahmed_Khalil_CV.pdf"
+           target="_blank">
+          <i class="fas fa-download"></i> Download CV
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- About Section -->
+  <section id="about">
+    <h2 class="section-title animate"><i class="fas fa-user"></i> About Me</h2>
+    <div class="about-content">
+      <div class="about-text animate">
+        <p>I am a passionate <strong>Senior Data Analyst</strong> with extensive expertise in <strong>Power BI, SQL Server, and Python</strong>. I specialize in developing interactive dashboards, automating complex workflows, and optimizing analytical processes that empower strategic decision-making at enterprise level.</p>
+        <p>My work focuses on transforming raw data into <strong>actionable insights</strong> that drive measurable business impact. I have successfully delivered data solutions for Telecom Egypt's Domestic Wholesale sector, serving major operators including Vodafone, Orange, Etisalat, WE, NTCS (Military), and Hayah Kareema initiative.</p>
+        <p>I continuously enhance my skills through advanced courses on Udemy, LinkedIn Learning, and Maven Analytics, while integrating cutting-edge AI tools to accelerate delivery and innovation.</p>
+        
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-number">8+</div>
+            <div class="stat-label">Enterprise Dashboards</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">15+</div>
+            <div class="stat-label">Automated Workflows</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">20+</div>
+            <div class="stat-label">Executive Infographics</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">100%</div>
+            <div class="stat-label">SLA Compliance Focus</div>
+          </div>
+        </div>
+      </div>
+      <div class="about-image animate delay-1">
+        <div style="background:var(--bg-card); border-radius:16px; padding:2rem; border:1px solid var(--border); text-align:center;">
+          <i class="fas fa-chart-line" style="font-size:4rem; color:var(--secondary); margin-bottom:1rem;"></i>
+          <h3 style="margin-bottom:1rem; color:#fff;">Data-Driven Decisions</h3>
+          <p style="color:var(--text-secondary);">Turning complex telecom data into strategic business intelligence</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects">
+    <h2 class="section-title animate"><i class="fas fa-tachometer-alt"></i> Featured Projects</h2>
+    
+    <div class="filters animate">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="powerbi">Power BI</button>
+      <button class="filter-btn" data-filter="python">Python</button>
+      <button class="filter-btn" data-filter="automation">Automation</button>
+      <button class="filter-btn" data-filter="executive">Executive</button>
+    </div>
+    
+    <div class="projects-grid">
+      <!-- Project 1: Financial Performance Dashboard -->
+      <div class="project-card featured animate" data-category="powerbi executive">
+        <div class="project-header">
+          <h3 class="project-title">Financial Performance Dashboard</h3>
+          <span class="project-badge">Featured</span>
+        </div>
+        <p class="project-description">Domestic Wholesale - Telecom Egypt | Comprehensive revenue analytics platform tracking Actual vs Budget performance across all service lines.</p>
+        
+        <div class="project-tech">
+          <span class="tech-tag">Power BI</span>
+          <span class="tech-tag">SQL Server</span>
+          <span class="tech-tag">DAX</span>
+          <span class="tech-tag">Excel</span>
+        </div>
+        
+        <ul class="project-features">
+          <li>Revenue tracking: Actual vs Budget with variance analysis</li>
+          <li>Historical & YTD figures with CAGR calculations</li>
+          <li>Market share analysis by operator (Vodafone, Orange, Etisalat, WE, NTCS, Hayah Kareema)</li>
+          <li>Forex impact modeling on USD-priced services per contractual agreements</li>
+          <li>Service hierarchy: Infrastructure, Access, Voice with 12+ sub-services</li>
+          <li>Top-selling services identification & profit contribution analysis</li>
+        </ul>
+        
+        <div class="project-links">
+          <a href="#" class="project-link" onclick="return false;"><i class="fas fa-external-link-alt"></i> View Case Study</a>
+          <a href="#" class="project-link" onclick="return false;"><i class="fas fa-code"></i> Technical Overview</a>
+        </div>
+      </div>
+
+      <!-- Project 2: Transmission Dashboard -->
+      <div class="project-card animate" data-category="powerbi">
+        <div class="project-header">
+          <h3 class="project-title">Transmission Services Dashboard</h3>
+          <span class="project-badge secondary">Operational</span>
+        </div>
+        <p class="project-description">End-to-end monitoring of financial & operational metrics for communication circuits delivery across enterprise clients.</p>
+        
+        <div class="project-tech">
+          <span class="tech-tag">Power BI</span>
+          <span class="tech-tag">SQL</span>
+          <span class="tech-tag">Data Modeling</span>
+        </div>
+        
+        <ul class="project-features">
+          <li>Forecast vs actual delivery tracking with variance alerts</li>
+          <li>Client comparison: revenue contribution vs profitability analysis</li>
+          <li>Circuit fault monitoring with root cause categorization</li>
+          <li>SLA compliance tracking per service level agreement</li>
+          <li>Operational KPIs: installation time, resolution time, uptime %</li>
+        </ul>
+        
+        <div class="project-links">
+          <a href="#" class="project-link" onclick="return false;"><i class="fas fa-external-link-alt"></i> View Dashboard</a>
+        </div>
+      </div>
+
+      <!-- Project 3: FTTS Operations Dashboard -->
+      <div class="project-card animate delay-1" data-category="powerbi python">
+        <div class="project-header">
+          <h3 class="project-title">FTTS Operations & Aging Dashboard</h3>
+          <span class="project-badge">Python Enhanced</span>
+        </div>
+        <p class="project-description">Specialized dashboard for Fiber-to-the-Home operations tracking 3-stage pre-delivery process with aging analysis and SLA monitoring.</p>
+        
+        <div class="project-tech">
+          <span class="tech-tag">Power BI</span>
+          <span class="tech-tag">Python</span>
+          <span class="tech-tag">Pandas</span>
+          <span class="tech-tag">SQL</span>
+        </div>
+        
+        <ul class="project-features">
+          <li>3-stage visit tracking: Survey, Design, Installation with success metrics</li>
+          <li>Python-powered aging calculation for each stage and site</li>
+          <li>Problem categorization & root cause analysis with Pareto charts</li>
+          <li>SLA calculation per stage with breach identification</li>
+          <li>Financial metrics: cost per site, ROI analysis, profitability tracking</li>
+          <li>Interactive drill-down from regional to site-level details</li>
+        </ul>
+        
+        <div class="project-links">
+          <a href="#" class="project-link" onclick="return false;"><i class="fas fa-external-link-alt"></i> View Case Study</a>
+          <a href="#" class="project-link" onclick="return false;"><i class="fab fa-python"></i> Python Code Sample</a>
+        </div>
+      </div>
+
+      <!-- Project 4: Access Services Dashboard -->
+      <div class="project-card animate" data-category="powerbi">
+        <div class="project-header">
+          <h3 class="project-title">Access Services Analytics Hub</h3>
+        </div>
+        <p class="project-description">Unified analytics platform for Access services including Fiber, Local Loop, ADSL, and National Roaming with financial & operational KPIs.</p>
+        
+        <div class="project-tech">
+          <span class="tech-tag">Power BI</span>
+          <span class="tech-tag">DAX</span>
+          <span class="tech-tag">SQL Server</span>
+        </div>
+        
+        <ul class="project-features">
+          <li>Service performance tracking across 5 Access sub-services</li>
+          <li>Revenue forecasting with scenario modeling capabilities</li>
+          <li>Client segmentation by usage patterns and profitability</li>
+          <li>Network capacity planning insights with utilization metrics</li>
+          <li>Automated monthly executive summary generation</li>
+        </ul>
+        
+        <div class="project-links">
+          <a href="#" class="project-link" onclick="return false;"><i class="fas fa-external-link-alt"></i> View Overview</a>
+        </div>
+      </div>
+
+      <!-- Project 5: SLA Compliance Dashboard -->
+      <div class="project-card animate delay-1" data-category="powerbi">
+        <div class="project-header">
+          <h3 class="project-title">SLA & Commitment Tracker</h3>
+          <span class="project-badge tertiary">Strategic</span>
+        </div>
+        <p class="project-description">Enterprise-wide SLA monitoring system tracking commitments, progress, and breach analysis across all service agreements.</p>
+        
+        <div class="project-tech">
+          <span class="tech-tag">Power BI</span>
+          <span class="tech-tag">Power Automate</span>
+          <span class="tech-tag">SQL</span>
+        </div>
+        
+        <ul class="project-features">
+          <li>Real-time SLA compliance monitoring per service & client</li>
+          <li>Breach prediction with early warning indicators</li>
+          <li>Commitment tracking with progress visualization</li>
+          <li>Root cause analysis for SLA violations</li>
+          <li>Automated alerting system for at-risk agreements</li>
+        </ul>
+        
+        <div class="project-links">
+          <a href="#" class="project-link" onclick="return false;"><i class="fas fa-external-link-alt"></i> Learn More</a>
+        </div>
+      </div>
+
+      <!-- Project 6: Invoice Reconciliation Dashboard -->
+      <div class="project-card animate" data-category="python">
+        <div class="project-header">
+          <h3 class="project-title">Invoice Reconciliation Engine</h3>
+        </div>
+        <p class="project-description">Python-based solution for automated invoice calculation and reconciliation against issued bills, reducing manual effort by 85%.</p>
+        
+        <div class="project-tech">
+          <span class="tech-tag">Python</span>
+          <span class="tech-tag">Pandas</span>
+          <span class="tech-tag">NumPy</span>
+          <span class="tech-tag">SQL</span>
+        </div>
+        
+        <ul class="project-features">
+          <li>Automated invoice calculation based on contractual terms</li>
+          <li>Discrepancy detection between calculated vs issued invoices</li>
+          <li>Batch processing for high-volume monthly billing cycles</li>
+          <li>Audit trail generation for finance team review</li>
+          <li>Integration with Power BI for executive reporting</li>
+        </ul>
+        
+        <div class="project-links">
+          <a href="#" class="project-link" onclick="return false;"><i class="fab fa-python"></i> View Code Structure</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Automation Section -->
+  <section id="automation" style="background:linear-gradient(135deg, #161b22, #0d1b2a);">
+    <h2 class="section-title animate"><i class="fas fa-robot"></i> Automation & AI Integration</h2>
+    
+    <div class="automation-grid">
+      <!-- Insight Chatbot -->
+      <div class="automation-card animate">
+        <div class="automation-icon">
+          <i class="fas fa-comments"></i>
+        </div>
+        <h3>Insight Chatbot</h3>
+        <p style="color:var(--text-secondary); margin:1rem 0;">End-to-end Telegram chatbot for real-time business intelligence queries connected to SQL database.</p>
+        <ul class="project-features" style="margin:1.2rem 0;">
+          <li>Natural language queries for financial & operational data</li>
+          <li>Python backend with Gemini API integration for intelligent responses</li>
+          <li>Automated report generation with export capabilities</li>
+          <li>Role-based access control for sensitive data</li>
+          <li>Reduced ad-hoc request handling time by 70%</li>
+        </ul>
+        <div class="project-tech">
+          <span class="tech-tag">Python</span>
+          <span class="tech-tag">Telegram API</span>
+          <span class="tech-tag">Gemini AI</span>
+          <span class="tech-tag">SQL Server</span>
+        </div>
+      </div>
+
+      <!-- Power Automate Workflows -->
+      <div class="automation-card animate delay-1">
+        <div class="automation-icon">
+          <i class="fas fa-sync-alt"></i>
+        </div>
+        <h3>Power Automate Pipelines</h3>
+        <p style="color:var(--text-secondary); margin:1rem 0;">Automated data extraction and processing workflows integrating multiple enterprise systems.</p>
+        <ul class="project-features" style="margin:1.2rem 0;">
+          <li>Scheduled data extraction from legacy systems to SQL</li>
+          <li>Python data cleaning & transformation layer</li>
+          <li>Power BI dataset refresh automation with error handling</li>
+          <li>Outlook/Teams notifications for critical alerts</li>
+          <li>SharePoint integration for document management</li>
+        </ul>
+        <div class="project-tech">
+          <span class="tech-tag">Power Automate</span>
+          <span class="tech-tag">Python</span>
+          <span class="tech-tag">SharePoint</span>
+          <span class="tech-tag">Outlook API</span>
+        </div>
+      </div>
+
+      <!-- Process Documentation -->
+      <div class="automation-card animate delay-2">
+        <div class="automation-icon">
+          <i class="fas fa-project-diagram"></i>
+        </div>
+        <h3>Process Mapping & Documentation</h3>
+        <p style="color:var(--text-secondary); margin:1rem 0;">Comprehensive service process documentation with SLA tracking per workflow stage.</p>
+        <ul class="project-features" style="margin:1.2rem 0;">
+          <li>End-to-end process maps for 8+ telecom services in Visio</li>
+          <li>SLA definition per process stage with ownership matrix</li>
+          <li>Bottleneck identification with improvement recommendations</li>
+          <li>Integration with dashboards for real-time process monitoring</li>
+          <li>Version-controlled documentation for audit compliance</li>
+        </ul>
+        <div class="project-tech">
+          <span class="tech-tag">Microsoft Visio</span>
+          <span class="tech-tag">SharePoint</span>
+          <span class="tech-tag">Power BI</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills">
+    <h2 class="section-title animate"><i class="fas fa-laptop-code"></i> Technical Skills</h2>
+    
+    <div class="skills-container">
+      <div class="skill-category animate">
+        <h3><i class="fas fa-chart-bar"></i> Data Visualization</h3>
+        <div class="skill-item">
+          <div class="skill-header">
+            <span>Power BI</span>
+            <span>Expert</span>
+          </div>
+          <div class="skill-bar"><div class="skill-progress" style="width:95%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header">
+            <span>DAX & Data Modeling</span>
+            <span>Advanced</span>
+          </div>
+          <div class="skill-bar"><div class="skill-progress" style="width:90%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header">
+            <span>Executive Reporting</span>
+            <span>Expert</span>
+          </div>
+          <div class="skill-bar"><div class="skill-progress" style="width:92%"></div></div>
+        </div>
+      </div>
+      
+      <div class="skill-category animate delay-1">
+        <h3><i class="fas fa-database"></i> Data Engineering</h3>
+        <div class="skill-item">
+          <div class="skill-header">
+            <span>SQL Server</span>
+            <span>Advanced</span>
+          </div>
+          <div class="skill-bar"><div class="skill-progress" style="width:88%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header">
+            <span>Python (Pandas, NumPy)</span>
+            <span>Advanced</span>
+          </div>
+          <div class="skill-bar"><div class="skill-progress" style="width:85%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header">
+            <span>ETL & Data Pipelines</span>
+            <span>Intermediate</span>
+          </div>
+          <div class="skill-bar"><div class="skill-progress" style="width:80%"></div></div>
+        </div>
+      </div>
+      
+      <div class="skill-category animate delay-2">
+        <h3><i class="fas fa-cogs"></i> Automation & AI</h3>
+        <div class="skill-item">
+          <div class="skill-header">
+            <span>Power Automate</span>
+            <span>Advanced</span>
+          </div>
+          <div class="skill-bar"><div class="skill-progress" style="width:87%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header">
+            <span>AI Integration (Gemini, etc.)</span>
+            <span>Intermediate</span>
+          </div>
+          <div class="skill-bar"><div class="skill-progress" style="width:78%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header">
+            <span>Process Optimization</span>
+            <span>Expert</span>
+          </div>
+          <div class="skill-bar"><div class="skill-progress" style="width:93%"></div></div>
+        </div>
+      </div>
+      
+      <div class="skill-category animate delay-3">
+        <h3><i class="fas fa-business-time"></i> Business Domain</h3>
+        <div class="skill-item">
+          <div class="skill-header">
+            <span>Telecom Industry Knowledge</span>
+            <span>Expert</span>
+          </div>
+          <div class="skill-bar"><div class="skill-progress" style="width:96%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header">
+            <span>Financial Analysis</span>
+            <span>Advanced</span>
+          </div>
+          <div class="skill-bar"><div class="skill-progress" style="width:89%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header">
+            <span>SLA & Contract Management</span>
+            <span>Advanced</span>
+          </div>
+          <div class="skill-bar"><div class="skill-progress" style="width:86%"></div></div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Learning Section -->
+    <div style="margin-top:3rem; text-align:center;">
+      <h3 style="color:var(--secondary); margin-bottom:1.5rem;"><i class="fas fa-graduation-cap"></i> Continuous Learning</h3>
+      <p style="color:var(--text-secondary); max-width:700px; margin:0 auto 2rem;">
+        Committed to staying at the forefront of data analytics through continuous upskilling and AI tool integration
+      </p>
+      
+      <div class="learning-grid">
+        <div class="platform-card">
+          <div class="platform-icon"><i class="fab fa-udemy"></i></div>
+          <strong>Udemy</strong>
+          <p style="font-size:0.9rem; color:var(--text-secondary); margin-top:0.5rem;">Advanced Power BI, Python for Data Science</p>
+        </div>
+        <div class="platform-card">
+          <div class="platform-icon"><i class="fab fa-linkedin"></i></div>
+          <strong>LinkedIn Learning</strong>
+          <p style="font-size:0.9rem; color:var(--text-secondary); margin-top:0.5rem;">AI Fundamentals, Data Strategy</p>
+        </div>
+        <div class="platform-card">
+          <div class="platform-icon"><i class="fas fa-chart-line"></i></div>
+          <strong>Maven Analytics</strong>
+          <p style="font-size:0.9rem; color:var(--text-secondary); margin-top:0.5rem;">Data Visualization Mastery</p>
+        </div>
+        <div class="platform-card">
+          <div class="platform-icon"><i class="fas fa-brain"></i></div>
+          <strong>AI Tools</strong>
+          <p style="font-size:0.9rem; color:var(--text-secondary); margin-top:0.5rem;">Gemini, Copilot, Automation AI</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <h2 class="section-title animate"><i class="fas fa-envelope"></i> Get In Touch</h2>
+    
+    <div style="max-width:700px; margin:0 auto; text-align:center;" class="animate">
+      <p style="font-size:1.1rem; margin-bottom:2rem; color:var(--text-secondary);">
+        I'm currently open to new opportunities and collaborations. Whether you have a project in mind or just want to connect, feel free to reach out!
+      </p>
+      
+      <div style="display:flex; flex-direction:column; gap:1rem; margin-bottom:2.5rem;">
+        <!-- ✅ رابط الإيميل مع موضوع تلقائي -->
+        <a href="mailto:ahmedkhalil22.ak50@gmail.com?subject=Portfolio Inquiry - Ahmed Khalil" class="btn btn-primary" style="justify-content:center;">
+          <i class="fas fa-envelope"></i> Send Me an Email
+        </a>
+        <a href="https://www.linkedin.com/in/ahmed-khalil-badawy-995491209" target="_blank" class="btn btn-outline" style="justify-content:center;">
+          <i class="fab fa-linkedin"></i> Connect on LinkedIn
+        </a>
+      </div>
+      
+      <div class="contact-info" style="justify-content:center; flex-wrap:wrap;">
+        <a href="tel:+201550888806">
+          <i class="fas fa-phone"></i> +20 155 088 8806
+        </a>
+        <a href="#">
+          <i class="fas fa-map-marker-alt"></i> Cairo, Egypt
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div style="max-width:1200px; margin:0 auto;">
+      <div class="social-links">
+        <a href="https://www.linkedin.com/in/ahmed-khalil-badawy-995491209" target="_blank" aria-label="LinkedIn">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+        <a href="mailto:ahmedkhalil22.ak50@gmail.com" aria-label="Email">
+          <i class="fas fa-envelope"></i>
+        </a>
+        <a href="#" aria-label="GitHub" onclick="return false;">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="cv/Ahmed_Khalil_CV.pdf" aria-label="Portfolio PDF" download="Ahmed_Khalil_CV.pdf" target="_blank">
+          <i class="fas fa-file-pdf"></i>
+        </a>
+      </div>
+      
+      <p style="margin:1.5rem 0;">
+        © <span id="year"></span> Ahmed Khalil | Senior Data Analyst | All Rights Reserved
+      </p>
+      
+      <p style="font-size:0.9rem; color:var(--text-secondary);">
+        Crafted with <i class="fas fa-heart" style="color:var(--danger);"></i> using modern web technologies
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    // Set current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+    
+    // Mobile navigation toggle
+    const mobileToggle = document.getElementById('mobileToggle');
+    const navLinks = document.getElementById('navLinks');
+    
+    mobileToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+      mobileToggle.innerHTML = navLinks.classList.contains('active') 
+        ? '<i class="fas fa-times"></i>' 
+        : '<i class="fas fa-bars"></i>';
+    });
+    
+    // Close mobile menu when clicking a link
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+        mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
+      });
+    });
+    
+    // Smooth scroll for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+    
+    // Active navigation link on scroll
+    const sections = document.querySelectorAll('section');
+    const navItems = document.querySelectorAll('.nav-links a');
+    
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 100;
+        if (pageYOffset >= sectionTop) {
+          current = section.getAttribute('id');
+        }
+      });
+      
+      navItems.forEach(item => {
+        item.classList.remove('active');
+        if (item.getAttribute('href').slice(1) === current) {
+          item.classList.add('active');
+        }
+      });
+    });
+    
+    // Project filters
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const projectCards = document.querySelectorAll('.project-card');
+    
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Update active button
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        
+        const filter = btn.getAttribute('data-filter');
+        
+        // Filter projects
+        projectCards.forEach(card => {
+          if (filter === 'all' || card.getAttribute('data-category').includes(filter)) {
+            card.style.display = 'block';
+            setTimeout(() => {
+              card.style.opacity = '1';
+              card.style.transform = 'translateY(0)';
+            }, 100);
+          } else {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            setTimeout(() => {
+              card.style.display = 'none';
+            }, 300);
+          }
+        });
+      });
+    });
+    
+    // Animate skill bars on scroll
+    const skillBars = document.querySelectorAll('.skill-progress');
+    const skillsSection = document.getElementById('skills');
+    
+    const observerOptions = {
+      threshold: 0.3
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          skillBars.forEach(bar => {
+            const width = bar.style.width;
+            bar.style.width = '0';
+            setTimeout(() => {
+              bar.style.width = width;
+            }, 200);
+          });
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+    
+    observer.observe(skillsSection);
+    
+    // Initialize animations on load
+    document.addEventListener('DOMContentLoaded', () => {
+      // Set initial state for animated elements
+      document.querySelectorAll('.animate').forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(20px)';
+        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      });
+      
+      // Trigger animations after a short delay
+      setTimeout(() => {
+        document.querySelectorAll('.animate').forEach((el, index) => {
+          setTimeout(() => {
+            el.style.opacity = '1';
+            el.style.transform = 'translateY(0)';
+          }, index * 100);
+        });
+      }, 300);
+    });
+  </script>
+</body>
+</html>
